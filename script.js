@@ -8,10 +8,10 @@ const emptyMessage = document.getElementById("empty_message");
 const watchlist = {
     movies: [{ title: "The Princess Bride", genre: "Adventure", watched: false }],
     toggleWatched(index) {
-        // TODO (Step 4)
+        this.movies[index].watched = !this.movies[index].watched;
     },
     removeMovie(index) {
-        // TODO (Step 4)
+        this.movies.splice(index, 1);
     }
 };
 
@@ -24,16 +24,15 @@ function loadMovies() {
 }
 
 function renderMovies() {
-  // TODO (Step 3)
     movieList.replaceChildren();
 
-    watchlist.movies.forEach((movie) => {
-        movieList.appendChild(createMovieCard(movie));
+    watchlist.movies.forEach((movie, index) => {
+        movieList.appendChild(createMovieCard(movie, index));
     });
 }
 
-function createMovieCard(movie) {
-        const item = document.createElement("li");
+function createMovieCard(movie, index) {
+    const item = document.createElement("li");
     const card = document.createElement("div");
     card.className = "movie_card";
 
@@ -74,17 +73,16 @@ function createMovieCard(movie) {
     card.appendChild(actions);
     item.appendChild(card);
 
-    // Toggle watched: update the movie object AND the display
     watch_button.addEventListener("click", () => {
-        movie.watched = !movie.watched;
-        status_span.textContent = movie.watched ? "Watched" : "Not Watched";
-        watch_button.textContent = movie.watched ? "Mark Unwatched" : "Mark Watched";
+        watchlist.toggleWatched(index);
+        saveMovies();     // no-op until Step 6
+        renderMovies();
     });
 
-    // Remove: take it out of the array AND the page
     remove_button.addEventListener("click", () => {
-        movies.splice(movies.indexOf(movie), 1);
-        movie_list.removeChild(item);
+        watchlist.removeMovie(index);
+        saveMovies();     // no-op until Step 6
+        renderMovies();
     });
 
     return item;
