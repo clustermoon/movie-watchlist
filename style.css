@@ -1,0 +1,122 @@
+/*
+=====================================================
+File:         style.css
+=====================================================
+David_wommack
+CIS-131 Web Dev Class
+=====================================================
+Project: Movie Watchlist
+Date: 10/11/2026
+=====================================================
+*/
+:root{
+    --bg-dark: #0b0d17;
+    --bg-accent: #1a1033;
+    --text: #f2f2f2;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    color: var(--text);
+    background:
+        radial-gradient(ellipse at top, rgba(120, 60, 200, 0.35), transparent 60%),
+        linear-gradient(180deg, var(--bg-accent), var(--bg-dark));
+    background-attachment: fixed;
+}
+
+footer {
+    margin-top: auto;
+    text-align: center;
+    padding: 1rem;
+    color:rgba(164, 131, 206, 0.253)
+}
+
+#main_page_container {
+    min-height: 100vh;
+    min-height: 100dvh; /* accounts for mobile browser toolbars; ignored if unsupported */
+    display: flex;
+    flex-direction: column;
+}
+
+.content_card {
+    display: flex;
+    flex: 1; /* takes up all leftover space, pushing the footer down */
+    flex-direction: column;
+    padding: 1rem;
+    margin: 5rem auto;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 600px;      /* adjust to taste */
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+#section_addition {
+    width: 100%;
+    text-align: left;      /* left-aligns the heading and the error message too */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;  /* inputs fill the form's width */
+    gap: 0.4rem;
+}
+
+form input,
+form select {
+    width: 100%;
+    box-sizing: border-box; /* keeps padding from pushing past 100% */
+    padding: 0.5rem;
+}
+
+form button {
+    align-self: flex-start; /* keeps the button its natural size, on the left */
+    margin-top: 1rem;
+}
+
+label {
+    font-weight: bold;
+}
+
+#section_display {
+    width: 100%;
+    text-align: left;      /* left-aligns the heading and the error message too */
+}
+
+#movie_list {
+    list-style: none;       /* removes the bullets */
+    padding: 0;             /* removes the default left indent */
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;           /* space between cards when you have several */
+}
+
+.movie_card {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 1.5rem;
+    background: rgba(255, 255, 255, 0.11);
+    padding: 1rem;
+}
+
+.movie_card h3 {
+    margin: 0 0 0.5rem;
+}
+
+.movie_details {
+    margin: 0 0 0.75rem;
+}
+
+.watch_status::before {
+    content: " · ";         /* adds the separator between genre and status */
+}
+
+.movie_actions {
+    display: flex;
+    gap: 0.5rem;            /* spacing between the buttons */
+}

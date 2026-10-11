@@ -6,7 +6,7 @@ const movieList = document.getElementById("movie_list");
 const emptyMessage = document.getElementById("empty_message");
 
 const watchlist = {
-    movies: [{ title: "The Princess Bride", genre: "Adventure", watched: false }],
+    movies: [],
     toggleWatched(index) {
         this.movies[index].watched = !this.movies[index].watched;
     },
@@ -95,6 +95,9 @@ function createMovieCard(movie, index) {
         renderMovies();
     });
 
+    emptyMessage.textContent = "Your watchlist is empty. Add a movie to get started.";
+    emptyMessage.hidden = watchlist.movies.length > 0;
+
     return item;
 }
 
@@ -105,12 +108,12 @@ form.addEventListener("submit", (event) => {
     const genre = genreSelect.value;
 
     if (title === "") {
-        message.textContent = "Please enter a movie title.";
+        message.textContent = "Enter a movie title.";
         return;
     }
 
     if (genre === "") {
-        message.textContent = "Please select a genre.";
+        message.textContent = "Choose a genre.";
         return;
     }
 
