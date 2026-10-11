@@ -10,7 +10,42 @@
 </head>
 
 <body>
-    <h1>My Movie Watchlist</h1>
+        <div id="main_page_container">
+
+            <div class="content_card">
+
+                <div  id="section_addition">
+                    <h1>My Movie Watchlist</h1>
+                    <form id="movie_form">
+                        <label for="movie_title">Movie Title:</label>
+                        <input type="text" id="movie_title" name="movie_title" placeholder="Enter movie title">
+                        <label for="movie_genre">Movie Genre:</label>
+                        <select id="movie_genre" name="movie_genre">
+                            <option value="" selected>Choose a Genre</option>
+                            <option value="action">Action</option>
+                            <option value="comedy">Comedy</option>
+                            <option value="drama">Drama</option>
+                            <option value="horror">Horror</option>
+                        </select>
+                        <button type="submit">Add Movie</button>
+                    </form>
+                    <p id="error_message"></p>
+                </div>
+
+                <div id="section_display">
+                    <h2>Movies on My List</h2>
+                    <ul id="movie_list">
+                    </ul>
+                    <p id="empty_message"></p>
+                </div>
+
+            </div>
+
+            <footer>
+                <p>Copyright &copy; 2026 David Wommack.</p>
+            </footer>
+
+        </div>
 </body>
 
 </html>
