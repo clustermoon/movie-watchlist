@@ -89,7 +89,28 @@ function createMovieCard(movie, index) {
 }
 
 form.addEventListener("submit", (event) => {
-  // TODO (Step 5)
+    event.preventDefault();
+
+    const title = titleInput.value.trim();
+    const genre = genreSelect.value;
+
+    if (title === "") {
+        message.textContent = "Please enter a movie title.";
+        return;
+    }
+
+    if (genre === "") {
+        message.textContent = "Please select a genre.";
+        return;
+    }
+
+    message.textContent = "";
+
+    watchlist.movies.push({ title: title, genre: genre, watched: false });
+    saveMovies();
+    renderMovies();
+
+    form.reset();
 });
 
 loadMovies();
