@@ -16,11 +16,21 @@ const watchlist = {
 };
 
 function saveMovies() {
-  // TODO (Step 6)
+    localStorage.setItem("movies", JSON.stringify(watchlist.movies));
 }
 
 function loadMovies() {
-  // TODO (Step 6)
+    const saved = localStorage.getItem("movies");
+
+    if (saved === null) {
+        return;   // nothing saved yet, keep the default array
+    }
+
+    try {
+        watchlist.movies = JSON.parse(saved);
+    } catch (error) {
+        watchlist.movies = [];
+    }
 }
 
 function renderMovies() {
